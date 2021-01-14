@@ -255,7 +255,7 @@ public class ExprBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements E
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPlus_minus(ExprParser.Plus_minusContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAddopr(ExprParser.AddoprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -263,13 +263,6 @@ public class ExprBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements E
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitMultopr(ExprParser.MultoprContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitMult_div_mod(ExprParser.Mult_div_modContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

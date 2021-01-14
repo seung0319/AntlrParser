@@ -1,5 +1,5 @@
 T__0=1
-CONSTANT=2
+T__1=2
 CHAR_VALUE=3
 STRING_VALUE=4
 INT_VALUE=5
@@ -64,8 +64,8 @@ DIGIT=63
 LETTER=64
 WS=65
 COMMENT=66
-'create'=1
-'constant'=2
+'constant'=1
+'create'=2
 'if'=7
 'else'=8
 'else if'=9

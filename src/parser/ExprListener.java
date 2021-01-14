@@ -348,15 +348,15 @@ public interface ExprListener extends ParseTreeListener {
 	 */
 	void exitOpr(ExprParser.OprContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ExprParser#plus_minus}.
+	 * Enter a parse tree produced by {@link ExprParser#addopr}.
 	 * @param ctx the parse tree
 	 */
-	void enterPlus_minus(ExprParser.Plus_minusContext ctx);
+	void enterAddopr(ExprParser.AddoprContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ExprParser#plus_minus}.
+	 * Exit a parse tree produced by {@link ExprParser#addopr}.
 	 * @param ctx the parse tree
 	 */
-	void exitPlus_minus(ExprParser.Plus_minusContext ctx);
+	void exitAddopr(ExprParser.AddoprContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ExprParser#multopr}.
 	 * @param ctx the parse tree
@@ -367,16 +367,6 @@ public interface ExprListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMultopr(ExprParser.MultoprContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ExprParser#mult_div_mod}.
-	 * @param ctx the parse tree
-	 */
-	void enterMult_div_mod(ExprParser.Mult_div_modContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ExprParser#mult_div_mod}.
-	 * @param ctx the parse tree
-	 */
-	void exitMult_div_mod(ExprParser.Mult_div_modContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ExprParser#terminalopr}.
 	 * @param ctx the parse tree

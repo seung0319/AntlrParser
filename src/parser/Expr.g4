@@ -11,7 +11,8 @@ block_content: (( declaration | constantdeclaration | assignment | loopdowhile |
 main: MAIN LEFT_PAREN RIGHT_PAREN LEFT_BRACE block_content* RIGHT_BRACE;
 function: FUNCTION (INT_TYPE | FLOAT_TYPE | CHAR_TYPE | STRING_TYPE | VOID_TYPE) (LEFT_BRACKET RIGHT_BRACKET)? ID LEFT_PAREN (parameter (COMMA parameter)*)? RIGHT_PAREN LEFT_BRACE block_content* (returnstatement)? RIGHT_BRACE;
 //function: FUNCTION (INT_TYPE | FLOAT_TYPE | CHAR_TYPE | STRING_TYPE | VOID_TYPE) (LEFT_BRACKET RIGHT_BRACKET)? ID LEFT_PAREN (parameter (COMMA parameter)*)? RIGHT_PAREN LEFT_BRACE block_content* (returnstatement)? RIGHT_BRACE;
-call: ID LEFT_PAREN (INT_VALUE| FLOAT_VALUE | STRING_VALUE | CHAR_VALUE | booleanexp | opr | ID)* RIGHT_PAREN;
+//call: ID LEFT_PAREN (INT_VALUE| FLOAT_VALUE | STRING_VALUE | CHAR_VALUE | booleanexp | opr | ID)* RIGHT_PAREN;
+call: ID LEFT_PAREN ((INT_VALUE| FLOAT_VALUE | STRING_VALUE | CHAR_VALUE | booleanexp | opr | ID) (COMMA (INT_VALUE| FLOAT_VALUE | STRING_VALUE | CHAR_VALUE | booleanexp | opr | ID))*  )* RIGHT_PAREN;
 returnstatement: RETURN (booleanexp|opr|ID)*;
 
 //parameter
@@ -26,7 +27,7 @@ arrayparameter: (INT_TYPE|FLOAT_TYPE|CHAR_TYPE|BOOLEAN_TYPE) LEFT_BRACKET RIGHT_
 
 //declaration
 declaration: singledeclaration | arraydeclaration;
-constantdeclaration: CONSTANT declaration;
+constantdeclaration: 'constant' declaration;
 singledeclaration: intdeclaration | floatdeclaration | chardeclaration | booleandeclaration | stringdeclaration;
 arraydeclaration: intarrdeclaration | floatarrdeclaration | chararrdeclaration | booleanarrdeclaration;
 booleandeclaration: BOOLEAN_TYPE ID ( EQUALS booleanexp (logic booleanexp)*);
@@ -49,19 +50,23 @@ condition: IF LEFT_PAREN booleanexp (logic booleanexp)* RIGHT_PAREN THEN LEFT_BR
 //loopwhiledowhile : loopwhile | loopdowhile;
 loop: loopfor | loopwhile;
 loopfor: FOR (ID | intdeclaration | assignment)  (UP | DOWN) TO (ID | INT_VALUE) LEFT_BRACE block_content* RIGHT_BRACE;
-loopwhile: WHILE LEFT_PAREN booleanexp RIGHT_PAREN LEFT_BRACE block_content* RIGHT_BRACE;
-loopdowhile: DO LEFT_BRACE block_content* RIGHT_BRACE WHILE LEFT_PAREN booleanexp RIGHT_PAREN;
+loopwhile: WHILE (ID | intdeclaration | assignment)  (UP | DOWN) TO (ID | INT_VALUE) LEFT_BRACE block_content* RIGHT_BRACE;
+loopdowhile: DO LEFT_BRACE block_content* RIGHT_BRACE WHILE (ID | intdeclaration | assignment)  (UP | DOWN) TO (ID | INT_VALUE);
 
 //operations
 operation: ID EQUALS opr | ID shortopr;
 
-
-opr: opr plus_minus | multopr;
+/*opr: addopr;
+addopr: addopr plus_minus | multopr;
 plus_minus: PLUS multopr | MINUS multopr | multopr;
 multopr: multopr mult_div_mod | terminalopr;
 mult_div_mod:  MUL terminalopr | DIV terminalopr | MOD terminalopr;
 terminalopr: ID | INT_VALUE | FLOAT_VALUE | LEFT_PAREN opr RIGHT_PAREN;
-
+*/
+opr: addopr;
+addopr: addopr PLUS multopr | addopr MINUS multopr | multopr;
+multopr: multopr MUL terminalopr | multopr DIV terminalopr | multopr MOD terminalopr | terminalopr;
+terminalopr: ID | INT_VALUE | FLOAT_VALUE | LEFT_PAREN opr RIGHT_PAREN;
 
 shortopr: PLUS_PLUS | MINUS_MINUS | (PLUS_EQUALS | MIN_EQUALS | MUL_EQUALS | DIV_EQUALS) INT_VALUE;
 
@@ -79,7 +84,7 @@ logic: (AND | OR);
 
 
 //literals
-CONSTANT: 'constant';
+//CONSTANT: 'constant';
 CHAR_VALUE: QUOTE_S . QUOTE_S;
 STRING_VALUE: QUOTE_D ~('"')* QUOTE_D;
 INT_VALUE: MINUS? DIGIT+;

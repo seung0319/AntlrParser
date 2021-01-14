@@ -215,23 +215,17 @@ public interface ExprVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitOpr(ExprParser.OprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ExprParser#plus_minus}.
+	 * Visit a parse tree produced by {@link ExprParser#addopr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPlus_minus(ExprParser.Plus_minusContext ctx);
+	T visitAddopr(ExprParser.AddoprContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ExprParser#multopr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMultopr(ExprParser.MultoprContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link ExprParser#mult_div_mod}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMult_div_mod(ExprParser.Mult_div_modContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ExprParser#terminalopr}.
 	 * @param ctx the parse tree

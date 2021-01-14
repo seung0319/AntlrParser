@@ -17,7 +17,7 @@ public class ExprLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, CONSTANT=2, CHAR_VALUE=3, STRING_VALUE=4, INT_VALUE=5, FLOAT_VALUE=6, 
+		T__0=1, T__1=2, CHAR_VALUE=3, STRING_VALUE=4, INT_VALUE=5, FLOAT_VALUE=6, 
 		IF=7, ELSE=8, ELSEIF=9, THEN=10, FOR=11, WHILE=12, DO=13, UP=14, DOWN=15, 
 		TO=16, INT_TYPE=17, FLOAT_TYPE=18, CHAR_TYPE=19, STRING_TYPE=20, BOOLEAN_TYPE=21, 
 		VOID_TYPE=22, FUNCTION=23, PRINT=24, SCAN=25, MAIN=26, RETURN=27, TRUE=28, 
@@ -38,7 +38,7 @@ public class ExprLexer extends Lexer {
 
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"T__0", "CONSTANT", "CHAR_VALUE", "STRING_VALUE", "INT_VALUE", "FLOAT_VALUE", 
+			"T__0", "T__1", "CHAR_VALUE", "STRING_VALUE", "INT_VALUE", "FLOAT_VALUE", 
 			"IF", "ELSE", "ELSEIF", "THEN", "FOR", "WHILE", "DO", "UP", "DOWN", "TO", 
 			"INT_TYPE", "FLOAT_TYPE", "CHAR_TYPE", "STRING_TYPE", "BOOLEAN_TYPE", 
 			"VOID_TYPE", "FUNCTION", "PRINT", "SCAN", "MAIN", "RETURN", "TRUE", "FALSE", 
@@ -54,7 +54,7 @@ public class ExprLexer extends Lexer {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'create'", "'constant'", null, null, null, null, "'if'", "'else'", 
+			null, "'constant'", "'create'", null, null, null, null, "'if'", "'else'", 
 			"'else if'", "'then'", "'for'", "'while'", "'do'", "'up'", "'down'", 
 			"'to'", "'int'", "'float'", "'char'", "'string'", "'bool'", "'void'", 
 			"'func'", "'print'", "'scan'", "'main'", "'return'", "'true'", "'false'", 
@@ -67,7 +67,7 @@ public class ExprLexer extends Lexer {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, "CONSTANT", "CHAR_VALUE", "STRING_VALUE", "INT_VALUE", "FLOAT_VALUE", 
+			null, null, null, "CHAR_VALUE", "STRING_VALUE", "INT_VALUE", "FLOAT_VALUE", 
 			"IF", "ELSE", "ELSEIF", "THEN", "FOR", "WHILE", "DO", "UP", "DOWN", "TO", 
 			"INT_TYPE", "FLOAT_TYPE", "CHAR_TYPE", "STRING_TYPE", "BOOLEAN_TYPE", 
 			"VOID_TYPE", "FUNCTION", "PRINT", "SCAN", "MAIN", "RETURN", "TRUE", "FALSE", 
@@ -147,7 +147,7 @@ public class ExprLexer extends Lexer {
 		",\t,\4-\t-\4.\t.\4/\t/\4\60\t\60\4\61\t\61\4\62\t\62\4\63\t\63\4\64\t"+
 		"\64\4\65\t\65\4\66\t\66\4\67\t\67\48\t8\49\t9\4:\t:\4;\t;\4<\t<\4=\t="+
 		"\4>\t>\4?\t?\4@\t@\4A\tA\4B\tB\4C\tC\4D\tD\3\2\3\2\3\2\3\2\3\2\3\2\3\2"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\5\3\5\7\5\u00a0"+
+		"\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\5\3\5\7\5\u00a0"+
 		"\n\5\f\5\16\5\u00a3\13\5\3\5\3\5\3\6\5\6\u00a8\n\6\3\6\6\6\u00ab\n\6\r"+
 		"\6\16\6\u00ac\3\7\5\7\u00b0\n\7\3\7\6\7\u00b3\n\7\r\7\16\7\u00b4\3\7\3"+
 		"\7\6\7\u00b9\n\7\r\7\16\7\u00ba\5\7\u00bd\n\7\3\7\3\7\3\b\3\b\3\b\3\t"+
@@ -181,7 +181,7 @@ public class ExprLexer extends Lexer {
 		"\2e\3\2\2\2\2g\3\2\2\2\2i\3\2\2\2\2k\3\2\2\2\2m\3\2\2\2\2o\3\2\2\2\2q"+
 		"\3\2\2\2\2s\3\2\2\2\2u\3\2\2\2\2w\3\2\2\2\2y\3\2\2\2\2{\3\2\2\2\2}\3\2"+
 		"\2\2\2\177\3\2\2\2\2\u0081\3\2\2\2\2\u0085\3\2\2\2\2\u0087\3\2\2\2\3\u0089"+
-		"\3\2\2\2\5\u0090\3\2\2\2\7\u0099\3\2\2\2\t\u009d\3\2\2\2\13\u00a7\3\2"+
+		"\3\2\2\2\5\u0092\3\2\2\2\7\u0099\3\2\2\2\t\u009d\3\2\2\2\13\u00a7\3\2"+
 		"\2\2\r\u00af\3\2\2\2\17\u00c0\3\2\2\2\21\u00c3\3\2\2\2\23\u00c8\3\2\2"+
 		"\2\25\u00d0\3\2\2\2\27\u00d5\3\2\2\2\31\u00d9\3\2\2\2\33\u00df\3\2\2\2"+
 		"\35\u00e2\3\2\2\2\37\u00e5\3\2\2\2!\u00ea\3\2\2\2#\u00ed\3\2\2\2%\u00f1"+
@@ -196,10 +196,10 @@ public class ExprLexer extends Lexer {
 		"\u0171\3\2\2\2q\u0174\3\2\2\2s\u0176\3\2\2\2u\u0179\3\2\2\2w\u017c\3\2"+
 		"\2\2y\u017f\3\2\2\2{\u0182\3\2\2\2}\u0185\3\2\2\2\177\u0187\3\2\2\2\u0081"+
 		"\u0189\3\2\2\2\u0083\u018d\3\2\2\2\u0085\u0190\3\2\2\2\u0087\u0196\3\2"+
-		"\2\2\u0089\u008a\7e\2\2\u008a\u008b\7t\2\2\u008b\u008c\7g\2\2\u008c\u008d"+
-		"\7c\2\2\u008d\u008e\7v\2\2\u008e\u008f\7g\2\2\u008f\4\3\2\2\2\u0090\u0091"+
-		"\7e\2\2\u0091\u0092\7q\2\2\u0092\u0093\7p\2\2\u0093\u0094\7u\2\2\u0094"+
-		"\u0095\7v\2\2\u0095\u0096\7c\2\2\u0096\u0097\7p\2\2\u0097\u0098\7v\2\2"+
+		"\2\2\u0089\u008a\7e\2\2\u008a\u008b\7q\2\2\u008b\u008c\7p\2\2\u008c\u008d"+
+		"\7u\2\2\u008d\u008e\7v\2\2\u008e\u008f\7c\2\2\u008f\u0090\7p\2\2\u0090"+
+		"\u0091\7v\2\2\u0091\4\3\2\2\2\u0092\u0093\7e\2\2\u0093\u0094\7t\2\2\u0094"+
+		"\u0095\7g\2\2\u0095\u0096\7c\2\2\u0096\u0097\7v\2\2\u0097\u0098\7g\2\2"+
 		"\u0098\6\3\2\2\2\u0099\u009a\5Q)\2\u009a\u009b\13\2\2\2\u009b\u009c\5"+
 		"Q)\2\u009c\b\3\2\2\2\u009d\u00a1\5S*\2\u009e\u00a0\n\2\2\2\u009f\u009e"+
 		"\3\2\2\2\u00a0\u00a3\3\2\2\2\u00a1\u009f\3\2\2\2\u00a1\u00a2\3\2\2\2\u00a2"+
