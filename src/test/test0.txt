@@ -1,0 +1,24 @@
+//correct any minor syntax inconsistencies when necessary (refer to pseudocode's language design)
+
+func void testOne() {
+	int x = 0;
+	scan("Hello. I need your number: " ,x);
+	
+	for int i to 10 { 
+		print("Petmalu " +x+);
+
+
+}
+
+func void testTwo(float x) {
+	if(x = 4) then{
+	
+	}
+}
+
+main() {
+	float value = (5 * 1) + (5 * 5 / 1 + 3 + (4 + (5 * 3)))/2.0f * 8.0f;
+	
+	testOne()(x); 
+	testTwo(123 ++value);
+}
