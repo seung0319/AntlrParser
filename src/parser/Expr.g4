@@ -1,7 +1,7 @@
 grammar Expr;
 
 
-program: function* main function* EOF;
+program: function* main function EOF;
 
 block_content: (( declaration | constantdeclaration | assignment | loopdowhile | operation | print | scan | call) SEMICOLON) | (loop | condition);
 //block_content2: ( declaration | constantdeclaration | assignment | condition | operation | function | print | scan) SEMICOLON;

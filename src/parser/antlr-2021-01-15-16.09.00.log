@@ -1,0 +1,285 @@
+2021-01-15 16:09:00:257 grammar LogManager.java:25 before: (COMBINED_GRAMMAR Expr (RULES (RULE program (BLOCK (ALT (* (BLOCK (ALT function))) main function EOF))) (RULE block_content (BLOCK (ALT (BLOCK (ALT (BLOCK (ALT declaration) (ALT constantdeclaration) (ALT assignment) (ALT loopdowhile) (ALT operation) (ALT print) (ALT scan) (ALT call)) SEMICOLON))) (ALT (BLOCK (ALT loop) (ALT condition))))) (RULE main (BLOCK (ALT MAIN LEFT_PAREN RIGHT_PAREN LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (RULE function (BLOCK (ALT FUNCTION (BLOCK (ALT INT_TYPE) (ALT FLOAT_TYPE) (ALT CHAR_TYPE) (ALT STRING_TYPE) (ALT VOID_TYPE)) (? (BLOCK (ALT LEFT_BRACKET RIGHT_BRACKET))) ID LEFT_PAREN (? (BLOCK (ALT parameter (* (BLOCK (ALT COMMA parameter)))))) RIGHT_PAREN LEFT_BRACE (* (BLOCK (ALT block_content))) (? (BLOCK (ALT returnstatement))) RIGHT_BRACE))) (RULE call (BLOCK (ALT ID LEFT_PAREN (? (BLOCK (ALT (BLOCK (ALT INT_VALUE) (ALT FLOAT_VALUE) (ALT STRING_VALUE) (ALT CHAR_VALUE) (ALT booleanexp) (ALT opr) (ALT ID)) (* (BLOCK (ALT COMMA (BLOCK (ALT INT_VALUE) (ALT FLOAT_VALUE) (ALT STRING_VALUE) (ALT CHAR_VALUE) (ALT booleanexp) (ALT opr) (ALT ID)))))))) RIGHT_PAREN))) (RULE returnstatement (BLOCK (ALT RETURN (* (BLOCK (ALT booleanexp) (ALT opr) (ALT ID)))))) (RULE parameter (BLOCK (ALT intparameter) (ALT booleanparameter) (ALT stringparameter) (ALT charparameter) (ALT arrayparameter) (ALT floatparameter))) (RULE intparameter (BLOCK (ALT INT_TYPE ID))) (RULE booleanparameter (BLOCK (ALT BOOLEAN_TYPE ID))) (RULE floatparameter (BLOCK (ALT FLOAT_TYPE ID))) (RULE stringparameter (BLOCK (ALT STRING_TYPE ID))) (RULE charparameter (BLOCK (ALT CHAR_TYPE ID))) (RULE arrayparameter (BLOCK (ALT (BLOCK (ALT INT_TYPE) (ALT FLOAT_TYPE) (ALT CHAR_TYPE) (ALT BOOLEAN_TYPE)) LEFT_BRACKET RIGHT_BRACKET ID))) (RULE declaration (BLOCK (ALT singledeclaration) (ALT arraydeclaration))) (RULE constantdeclaration (BLOCK (ALT 'constant' declaration))) (RULE singledeclaration (BLOCK (ALT intdeclaration) (ALT floatdeclaration) (ALT chardeclaration) (ALT booleandeclaration) (ALT stringdeclaration))) (RULE arraydeclaration (BLOCK (ALT intarrdeclaration) (ALT floatarrdeclaration) (ALT chararrdeclaration) (ALT booleanarrdeclaration))) (RULE booleandeclaration (BLOCK (ALT BOOLEAN_TYPE ID (BLOCK (ALT EQUALS booleanexp (* (BLOCK (ALT logic booleanexp)))))))) (RULE booleanarrdeclaration (BLOCK (ALT BOOLEAN_TYPE LEFT_BRACKET RIGHT_BRACKET ID (? (BLOCK (ALT EQUALS 'create' BOOLEAN_TYPE booleanexp (* (BLOCK (ALT logic booleanexp))))))))) (RULE intdeclaration (BLOCK (ALT INT_TYPE ID (? (BLOCK (ALT EQUALS (BLOCK (ALT INT_VALUE) (ALT opr)))))))) (RULE stringdeclaration (BLOCK (ALT STRING_TYPE ID (? (BLOCK (ALT EQUALS (BLOCK (ALT STRING_VALUE) (ALT ID)))))))) (RULE intarrdeclaration (BLOCK (ALT INT_TYPE LEFT_BRACKET RIGHT_BRACKET ID (? (BLOCK (ALT EQUALS 'create' INT_TYPE LEFT_BRACKET INT_VALUE (* (BLOCK (ALT COMMA INT_VALUE))) RIGHT_BRACKET)))))) (RULE floatdeclaration (BLOCK (ALT FLOAT_TYPE ID (? (BLOCK (ALT EQUALS (BLOCK (ALT FLOAT_VALUE) (ALT opr)))))))) (RULE floatarrdeclaration (BLOCK (ALT FLOAT_TYPE LEFT_BRACKET RIGHT_BRACKET ID (? (BLOCK (ALT EQUALS 'create' FLOAT_TYPE LEFT_BRACKET FLOAT_VALUE (* (BLOCK (ALT COMMA FLOAT_VALUE))) RIGHT_BRACKET)))))) (RULE chardeclaration (BLOCK (ALT CHAR_TYPE ID (? (BLOCK (ALT EQUALS CHAR_VALUE)))))) (RULE chararrdeclaration (BLOCK (ALT STRING_TYPE ID (? (BLOCK (ALT EQUALS 'create' CHAR_TYPE STRING_VALUE)))))) (RULE assignment (BLOCK (ALT ID EQUALS (BLOCK (ALT opr) (ALT CHAR_VALUE) (ALT STRING_VALUE))))) (RULE condition (BLOCK (ALT IF LEFT_PAREN booleanexp (* (BLOCK (ALT logic booleanexp))) RIGHT_PAREN THEN LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE (* (BLOCK (ALT ELSEIF LEFT_PAREN booleanexp (* (BLOCK (ALT logic booleanexp))) RIGHT_PAREN THEN LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (? (BLOCK (ALT ELSE LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE)))))) (RULE loop (BLOCK (ALT loopfor) (ALT loopwhile))) (RULE loopfor (BLOCK (ALT FOR (BLOCK (ALT ID) (ALT intdeclaration) (ALT assignment)) (BLOCK (ALT UP) (ALT DOWN)) TO (BLOCK (ALT ID) (ALT INT_VALUE)) LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (RULE loopwhile (BLOCK (ALT WHILE (BLOCK (ALT ID) (ALT intdeclaration) (ALT assignment)) (BLOCK (ALT UP) (ALT DOWN)) TO (BLOCK (ALT ID) (ALT INT_VALUE)) LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (RULE loopdowhile (BLOCK (ALT DO LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE WHILE (BLOCK (ALT ID) (ALT intdeclaration) (ALT assignment)) (BLOCK (ALT UP) (ALT DOWN)) TO (BLOCK (ALT ID) (ALT INT_VALUE))))) (RULE operation (BLOCK (ALT ID EQUALS opr) (ALT ID shortopr))) (RULE opr (BLOCK (ALT addopr))) (RULE addopr (BLOCK (ALT addopr PLUS multopr) (ALT addopr MINUS multopr) (ALT multopr))) (RULE multopr (BLOCK (ALT multopr MUL terminalopr) (ALT multopr DIV terminalopr) (ALT multopr MOD terminalopr) (ALT terminalopr))) (RULE terminalopr (BLOCK (ALT ID) (ALT INT_VALUE) (ALT FLOAT_VALUE) (ALT LEFT_PAREN opr RIGHT_PAREN))) (RULE shortopr (BLOCK (ALT PLUS_PLUS) (ALT MINUS_MINUS) (ALT (BLOCK (ALT PLUS_EQUALS) (ALT MIN_EQUALS) (ALT MUL_EQUALS) (ALT DIV_EQUALS)) INT_VALUE))) (RULE print (BLOCK (ALT PRINT LEFT_PAREN (? (BLOCK (ALT STRING_VALUE) (ALT ID))) (* (BLOCK (ALT PLUS (BLOCK (ALT STRING_VALUE) (ALT ID))))) RIGHT_PAREN))) (RULE scan (BLOCK (ALT SCAN LEFT_PAREN STRING_VALUE COMMA ID RIGHT_PAREN))) (RULE booleanexp (BLOCK (ALT (? (BLOCK (ALT NOT))) booleanvalue (? (BLOCK (ALT relation booleanvalue))) (* (BLOCK (ALT logic booleanexp)))))) (RULE booleanvalue (BLOCK (ALT INT_VALUE) (ALT ID) (ALT STRING_VALUE) (ALT CHAR_VALUE) (ALT TRUE) (ALT FALSE) (ALT LEFT_PAREN booleanexp RIGHT_PAREN))) (RULE relation (BLOCK (ALT (BLOCK (ALT EQUALS_EQUALS) (ALT NOT_EQUALS) (ALT LESS_THAN_EQUALS) (ALT LESS_THAN) (ALT GREATER_THAN_EQUALS) (ALT GREATER_THAN))))) (RULE logic (BLOCK (ALT (BLOCK (ALT AND) (ALT OR))))) (RULE CHAR_VALUE (BLOCK (ALT QUOTE_S . QUOTE_S))) (RULE STRING_VALUE (BLOCK (ALT QUOTE_D (* (BLOCK (ALT (~ (SET '"'))))) QUOTE_D))) (RULE INT_VALUE (BLOCK (ALT (? (BLOCK (ALT MINUS))) (+ (BLOCK (ALT DIGIT)))))) (RULE FLOAT_VALUE (BLOCK (ALT (? (BLOCK (ALT MINUS))) (+ (BLOCK (ALT DIGIT))) (? (BLOCK (ALT DOT (+ (BLOCK (ALT DIGIT)))))) 'f'))) (RULE IF (BLOCK (ALT 'if'))) (RULE ELSE (BLOCK (ALT 'else'))) (RULE ELSEIF (BLOCK (ALT 'else if'))) (RULE THEN (BLOCK (ALT 'then'))) (RULE FOR (BLOCK (ALT 'for'))) (RULE WHILE (BLOCK (ALT 'while'))) (RULE DO (BLOCK (ALT 'do'))) (RULE UP (BLOCK (ALT 'up'))) (RULE DOWN (BLOCK (ALT 'down'))) (RULE TO (BLOCK (ALT 'to'))) (RULE INT_TYPE (BLOCK (ALT 'int'))) (RULE FLOAT_TYPE (BLOCK (ALT 'float'))) (RULE CHAR_TYPE (BLOCK (ALT 'char'))) (RULE STRING_TYPE (BLOCK (ALT 'string'))) (RULE BOOLEAN_TYPE (BLOCK (ALT 'bool'))) (RULE VOID_TYPE (BLOCK (ALT 'void'))) (RULE FUNCTION (BLOCK (ALT 'func'))) (RULE PRINT (BLOCK (ALT 'print'))) (RULE SCAN (BLOCK (ALT 'scan'))) (RULE MAIN (BLOCK (ALT 'main'))) (RULE RETURN (BLOCK (ALT 'return'))) (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE ID (BLOCK (ALT LETTER (* (BLOCK (ALT LetterorDigit)))))) (RULE LEFT_BRACKET (BLOCK (ALT '['))) (RULE RIGHT_BRACKET (BLOCK (ALT ']'))) (RULE LEFT_PAREN (BLOCK (ALT '('))) (RULE RIGHT_PAREN (BLOCK (ALT ')'))) (RULE LEFT_BRACE (BLOCK (ALT '{'))) (RULE RIGHT_BRACE (BLOCK (ALT '}'))) (RULE COMMA (BLOCK (ALT ','))) (RULE SEMICOLON (BLOCK (ALT ';'))) (RULE DOT (BLOCK (ALT '.'))) (RULE QUOTE_S (BLOCK (ALT '\''))) (RULE QUOTE_D (BLOCK (ALT '"'))) (RULE PLUS_PLUS (BLOCK (ALT '++'))) (RULE MINUS_MINUS (BLOCK (ALT '--'))) (RULE PLUS (BLOCK (ALT '+'))) (RULE MINUS (BLOCK (ALT '-'))) (RULE MUL (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT '/'))) (RULE MOD (BLOCK (ALT '%'))) (RULE EQUALS (BLOCK (ALT '='))) (RULE PLUS_EQUALS (BLOCK (ALT '+='))) (RULE MIN_EQUALS (BLOCK (ALT '-='))) (RULE MUL_EQUALS (BLOCK (ALT '*='))) (RULE DIV_EQUALS (BLOCK (ALT '/='))) (RULE LESS_THAN (BLOCK (ALT '<'))) (RULE LESS_THAN_EQUALS (BLOCK (ALT '<='))) (RULE GREATER_THAN (BLOCK (ALT '>'))) (RULE GREATER_THAN_EQUALS (BLOCK (ALT '>='))) (RULE EQUALS_EQUALS (BLOCK (ALT '=='))) (RULE NOT_EQUALS (BLOCK (ALT '!='))) (RULE AND (BLOCK (ALT '&&'))) (RULE OR (BLOCK (ALT '||'))) (RULE NOT (BLOCK (ALT '!'))) (RULE DIGIT (BLOCK (ALT [0-9]))) (RULE LETTER (BLOCK (ALT [a-zA-Z$_]))) (RULE LetterorDigit (RULEMODIFIERS fragment) (BLOCK (ALT DIGIT) (ALT LETTER))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '//' (* (BLOCK (ALT (~ (SET [\r\n])))))) skip)))))
+2021-01-15 16:09:00:326 grammar LogManager.java:25 after: (COMBINED_GRAMMAR Expr (RULES (RULE program (BLOCK (ALT (* (BLOCK (ALT function))) main function EOF))) (RULE block_content (BLOCK (ALT (BLOCK (ALT (BLOCK (ALT declaration) (ALT constantdeclaration) (ALT assignment) (ALT loopdowhile) (ALT operation) (ALT print) (ALT scan) (ALT call)) SEMICOLON))) (ALT (BLOCK (ALT loop) (ALT condition))))) (RULE main (BLOCK (ALT MAIN LEFT_PAREN RIGHT_PAREN LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (RULE function (BLOCK (ALT FUNCTION (SET INT_TYPE FLOAT_TYPE CHAR_TYPE STRING_TYPE VOID_TYPE) (? (BLOCK (ALT LEFT_BRACKET RIGHT_BRACKET))) ID LEFT_PAREN (? (BLOCK (ALT parameter (* (BLOCK (ALT COMMA parameter)))))) RIGHT_PAREN LEFT_BRACE (* (BLOCK (ALT block_content))) (? (BLOCK (ALT returnstatement))) RIGHT_BRACE))) (RULE call (BLOCK (ALT ID LEFT_PAREN (? (BLOCK (ALT (BLOCK (ALT INT_VALUE) (ALT FLOAT_VALUE) (ALT STRING_VALUE) (ALT CHAR_VALUE) (ALT booleanexp) (ALT opr) (ALT ID)) (* (BLOCK (ALT COMMA (BLOCK (ALT INT_VALUE) (ALT FLOAT_VALUE) (ALT STRING_VALUE) (ALT CHAR_VALUE) (ALT booleanexp) (ALT opr) (ALT ID)))))))) RIGHT_PAREN))) (RULE returnstatement (BLOCK (ALT RETURN (* (BLOCK (ALT booleanexp) (ALT opr) (ALT ID)))))) (RULE parameter (BLOCK (ALT intparameter) (ALT booleanparameter) (ALT stringparameter) (ALT charparameter) (ALT arrayparameter) (ALT floatparameter))) (RULE intparameter (BLOCK (ALT INT_TYPE ID))) (RULE booleanparameter (BLOCK (ALT BOOLEAN_TYPE ID))) (RULE floatparameter (BLOCK (ALT FLOAT_TYPE ID))) (RULE stringparameter (BLOCK (ALT STRING_TYPE ID))) (RULE charparameter (BLOCK (ALT CHAR_TYPE ID))) (RULE arrayparameter (BLOCK (ALT (SET INT_TYPE FLOAT_TYPE CHAR_TYPE BOOLEAN_TYPE) LEFT_BRACKET RIGHT_BRACKET ID))) (RULE declaration (BLOCK (ALT singledeclaration) (ALT arraydeclaration))) (RULE constantdeclaration (BLOCK (ALT 'constant' declaration))) (RULE singledeclaration (BLOCK (ALT intdeclaration) (ALT floatdeclaration) (ALT chardeclaration) (ALT booleandeclaration) (ALT stringdeclaration))) (RULE arraydeclaration (BLOCK (ALT intarrdeclaration) (ALT floatarrdeclaration) (ALT chararrdeclaration) (ALT booleanarrdeclaration))) (RULE booleandeclaration (BLOCK (ALT BOOLEAN_TYPE ID (BLOCK (ALT EQUALS booleanexp (* (BLOCK (ALT logic booleanexp)))))))) (RULE booleanarrdeclaration (BLOCK (ALT BOOLEAN_TYPE LEFT_BRACKET RIGHT_BRACKET ID (? (BLOCK (ALT EQUALS 'create' BOOLEAN_TYPE booleanexp (* (BLOCK (ALT logic booleanexp))))))))) (RULE intdeclaration (BLOCK (ALT INT_TYPE ID (? (BLOCK (ALT EQUALS (BLOCK (ALT INT_VALUE) (ALT opr)))))))) (RULE stringdeclaration (BLOCK (ALT STRING_TYPE ID (? (BLOCK (ALT EQUALS (SET STRING_VALUE ID))))))) (RULE intarrdeclaration (BLOCK (ALT INT_TYPE LEFT_BRACKET RIGHT_BRACKET ID (? (BLOCK (ALT EQUALS 'create' INT_TYPE LEFT_BRACKET INT_VALUE (* (BLOCK (ALT COMMA INT_VALUE))) RIGHT_BRACKET)))))) (RULE floatdeclaration (BLOCK (ALT FLOAT_TYPE ID (? (BLOCK (ALT EQUALS (BLOCK (ALT FLOAT_VALUE) (ALT opr)))))))) (RULE floatarrdeclaration (BLOCK (ALT FLOAT_TYPE LEFT_BRACKET RIGHT_BRACKET ID (? (BLOCK (ALT EQUALS 'create' FLOAT_TYPE LEFT_BRACKET FLOAT_VALUE (* (BLOCK (ALT COMMA FLOAT_VALUE))) RIGHT_BRACKET)))))) (RULE chardeclaration (BLOCK (ALT CHAR_TYPE ID (? (BLOCK (ALT EQUALS CHAR_VALUE)))))) (RULE chararrdeclaration (BLOCK (ALT STRING_TYPE ID (? (BLOCK (ALT EQUALS 'create' CHAR_TYPE STRING_VALUE)))))) (RULE assignment (BLOCK (ALT ID EQUALS (BLOCK (ALT opr) (ALT CHAR_VALUE) (ALT STRING_VALUE))))) (RULE condition (BLOCK (ALT IF LEFT_PAREN booleanexp (* (BLOCK (ALT logic booleanexp))) RIGHT_PAREN THEN LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE (* (BLOCK (ALT ELSEIF LEFT_PAREN booleanexp (* (BLOCK (ALT logic booleanexp))) RIGHT_PAREN THEN LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (? (BLOCK (ALT ELSE LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE)))))) (RULE loop (BLOCK (ALT loopfor) (ALT loopwhile))) (RULE loopfor (BLOCK (ALT FOR (BLOCK (ALT ID) (ALT intdeclaration) (ALT assignment)) (SET UP DOWN) TO (SET ID INT_VALUE) LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (RULE loopwhile (BLOCK (ALT WHILE (BLOCK (ALT ID) (ALT intdeclaration) (ALT assignment)) (SET UP DOWN) TO (SET ID INT_VALUE) LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (RULE loopdowhile (BLOCK (ALT DO LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE WHILE (BLOCK (ALT ID) (ALT intdeclaration) (ALT assignment)) (SET UP DOWN) TO (SET ID INT_VALUE)))) (RULE operation (BLOCK (ALT ID EQUALS opr) (ALT ID shortopr))) (RULE opr (BLOCK (ALT addopr))) (RULE addopr (BLOCK (ALT addopr PLUS multopr) (ALT addopr MINUS multopr) (ALT multopr))) (RULE multopr (BLOCK (ALT multopr MUL terminalopr) (ALT multopr DIV terminalopr) (ALT multopr MOD terminalopr) (ALT terminalopr))) (RULE terminalopr (BLOCK (ALT ID) (ALT INT_VALUE) (ALT FLOAT_VALUE) (ALT LEFT_PAREN opr RIGHT_PAREN))) (RULE shortopr (BLOCK (ALT PLUS_PLUS) (ALT MINUS_MINUS) (ALT (SET PLUS_EQUALS MIN_EQUALS MUL_EQUALS DIV_EQUALS) INT_VALUE))) (RULE print (BLOCK (ALT PRINT LEFT_PAREN (? (BLOCK (ALT (SET STRING_VALUE ID)))) (* (BLOCK (ALT PLUS (SET STRING_VALUE ID)))) RIGHT_PAREN))) (RULE scan (BLOCK (ALT SCAN LEFT_PAREN STRING_VALUE COMMA ID RIGHT_PAREN))) (RULE booleanexp (BLOCK (ALT (? (BLOCK (ALT NOT))) booleanvalue (? (BLOCK (ALT relation booleanvalue))) (* (BLOCK (ALT logic booleanexp)))))) (RULE booleanvalue (BLOCK (ALT INT_VALUE) (ALT ID) (ALT STRING_VALUE) (ALT CHAR_VALUE) (ALT TRUE) (ALT FALSE) (ALT LEFT_PAREN booleanexp RIGHT_PAREN))) (RULE relation (BLOCK (ALT (SET EQUALS_EQUALS NOT_EQUALS LESS_THAN_EQUALS LESS_THAN GREATER_THAN_EQUALS GREATER_THAN)))) (RULE logic (BLOCK (ALT (SET AND OR)))) (RULE CHAR_VALUE (BLOCK (ALT QUOTE_S . QUOTE_S))) (RULE STRING_VALUE (BLOCK (ALT QUOTE_D (* (BLOCK (ALT (~ (SET '"'))))) QUOTE_D))) (RULE INT_VALUE (BLOCK (ALT (? (BLOCK (ALT MINUS))) (+ (BLOCK (ALT DIGIT)))))) (RULE FLOAT_VALUE (BLOCK (ALT (? (BLOCK (ALT MINUS))) (+ (BLOCK (ALT DIGIT))) (? (BLOCK (ALT DOT (+ (BLOCK (ALT DIGIT)))))) 'f'))) (RULE IF (BLOCK (ALT 'if'))) (RULE ELSE (BLOCK (ALT 'else'))) (RULE ELSEIF (BLOCK (ALT 'else if'))) (RULE THEN (BLOCK (ALT 'then'))) (RULE FOR (BLOCK (ALT 'for'))) (RULE WHILE (BLOCK (ALT 'while'))) (RULE DO (BLOCK (ALT 'do'))) (RULE UP (BLOCK (ALT 'up'))) (RULE DOWN (BLOCK (ALT 'down'))) (RULE TO (BLOCK (ALT 'to'))) (RULE INT_TYPE (BLOCK (ALT 'int'))) (RULE FLOAT_TYPE (BLOCK (ALT 'float'))) (RULE CHAR_TYPE (BLOCK (ALT 'char'))) (RULE STRING_TYPE (BLOCK (ALT 'string'))) (RULE BOOLEAN_TYPE (BLOCK (ALT 'bool'))) (RULE VOID_TYPE (BLOCK (ALT 'void'))) (RULE FUNCTION (BLOCK (ALT 'func'))) (RULE PRINT (BLOCK (ALT 'print'))) (RULE SCAN (BLOCK (ALT 'scan'))) (RULE MAIN (BLOCK (ALT 'main'))) (RULE RETURN (BLOCK (ALT 'return'))) (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE ID (BLOCK (ALT LETTER (* (BLOCK (ALT LetterorDigit)))))) (RULE LEFT_BRACKET (BLOCK (ALT '['))) (RULE RIGHT_BRACKET (BLOCK (ALT ']'))) (RULE LEFT_PAREN (BLOCK (ALT '('))) (RULE RIGHT_PAREN (BLOCK (ALT ')'))) (RULE LEFT_BRACE (BLOCK (ALT '{'))) (RULE RIGHT_BRACE (BLOCK (ALT '}'))) (RULE COMMA (BLOCK (ALT ','))) (RULE SEMICOLON (BLOCK (ALT ';'))) (RULE DOT (BLOCK (ALT '.'))) (RULE QUOTE_S (BLOCK (ALT '\''))) (RULE QUOTE_D (BLOCK (ALT '"'))) (RULE PLUS_PLUS (BLOCK (ALT '++'))) (RULE MINUS_MINUS (BLOCK (ALT '--'))) (RULE PLUS (BLOCK (ALT '+'))) (RULE MINUS (BLOCK (ALT '-'))) (RULE MUL (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT '/'))) (RULE MOD (BLOCK (ALT '%'))) (RULE EQUALS (BLOCK (ALT '='))) (RULE PLUS_EQUALS (BLOCK (ALT '+='))) (RULE MIN_EQUALS (BLOCK (ALT '-='))) (RULE MUL_EQUALS (BLOCK (ALT '*='))) (RULE DIV_EQUALS (BLOCK (ALT '/='))) (RULE LESS_THAN (BLOCK (ALT '<'))) (RULE LESS_THAN_EQUALS (BLOCK (ALT '<='))) (RULE GREATER_THAN (BLOCK (ALT '>'))) (RULE GREATER_THAN_EQUALS (BLOCK (ALT '>='))) (RULE EQUALS_EQUALS (BLOCK (ALT '=='))) (RULE NOT_EQUALS (BLOCK (ALT '!='))) (RULE AND (BLOCK (ALT '&&'))) (RULE OR (BLOCK (ALT '||'))) (RULE NOT (BLOCK (ALT '!'))) (RULE DIGIT (BLOCK (ALT [0-9]))) (RULE LETTER (BLOCK (ALT [a-zA-Z$_]))) (RULE LetterorDigit (RULEMODIFIERS fragment) (BLOCK (ALT DIGIT) (ALT LETTER))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '//' (* (BLOCK (ALT (~ (SET [\r\n])))))) skip)))))
+2021-01-15 16:09:00:364 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR Expr (RULES (RULE program (BLOCK (ALT (* (BLOCK (ALT function))) main function EOF))) (RULE block_content (BLOCK (ALT (BLOCK (ALT (BLOCK (ALT declaration) (ALT constantdeclaration) (ALT assignment) (ALT loopdowhile) (ALT operation) (ALT print) (ALT scan) (ALT call)) SEMICOLON))) (ALT (BLOCK (ALT loop) (ALT condition))))) (RULE main (BLOCK (ALT MAIN LEFT_PAREN RIGHT_PAREN LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (RULE function (BLOCK (ALT FUNCTION (SET INT_TYPE FLOAT_TYPE CHAR_TYPE STRING_TYPE VOID_TYPE) (? (BLOCK (ALT LEFT_BRACKET RIGHT_BRACKET))) ID LEFT_PAREN (? (BLOCK (ALT parameter (* (BLOCK (ALT COMMA parameter)))))) RIGHT_PAREN LEFT_BRACE (* (BLOCK (ALT block_content))) (? (BLOCK (ALT returnstatement))) RIGHT_BRACE))) (RULE call (BLOCK (ALT ID LEFT_PAREN (? (BLOCK (ALT (BLOCK (ALT INT_VALUE) (ALT FLOAT_VALUE) (ALT STRING_VALUE) (ALT CHAR_VALUE) (ALT booleanexp) (ALT opr) (ALT ID)) (* (BLOCK (ALT COMMA (BLOCK (ALT INT_VALUE) (ALT FLOAT_VALUE) (ALT STRING_VALUE) (ALT CHAR_VALUE) (ALT booleanexp) (ALT opr) (ALT ID)))))))) RIGHT_PAREN))) (RULE returnstatement (BLOCK (ALT RETURN (* (BLOCK (ALT booleanexp) (ALT opr) (ALT ID)))))) (RULE parameter (BLOCK (ALT intparameter) (ALT booleanparameter) (ALT stringparameter) (ALT charparameter) (ALT arrayparameter) (ALT floatparameter))) (RULE intparameter (BLOCK (ALT INT_TYPE ID))) (RULE booleanparameter (BLOCK (ALT BOOLEAN_TYPE ID))) (RULE floatparameter (BLOCK (ALT FLOAT_TYPE ID))) (RULE stringparameter (BLOCK (ALT STRING_TYPE ID))) (RULE charparameter (BLOCK (ALT CHAR_TYPE ID))) (RULE arrayparameter (BLOCK (ALT (SET INT_TYPE FLOAT_TYPE CHAR_TYPE BOOLEAN_TYPE) LEFT_BRACKET RIGHT_BRACKET ID))) (RULE declaration (BLOCK (ALT singledeclaration) (ALT arraydeclaration))) (RULE constantdeclaration (BLOCK (ALT 'constant' declaration))) (RULE singledeclaration (BLOCK (ALT intdeclaration) (ALT floatdeclaration) (ALT chardeclaration) (ALT booleandeclaration) (ALT stringdeclaration))) (RULE arraydeclaration (BLOCK (ALT intarrdeclaration) (ALT floatarrdeclaration) (ALT chararrdeclaration) (ALT booleanarrdeclaration))) (RULE booleandeclaration (BLOCK (ALT BOOLEAN_TYPE ID (BLOCK (ALT EQUALS booleanexp (* (BLOCK (ALT logic booleanexp)))))))) (RULE booleanarrdeclaration (BLOCK (ALT BOOLEAN_TYPE LEFT_BRACKET RIGHT_BRACKET ID (? (BLOCK (ALT EQUALS 'create' BOOLEAN_TYPE booleanexp (* (BLOCK (ALT logic booleanexp))))))))) (RULE intdeclaration (BLOCK (ALT INT_TYPE ID (? (BLOCK (ALT EQUALS (BLOCK (ALT INT_VALUE) (ALT opr)))))))) (RULE stringdeclaration (BLOCK (ALT STRING_TYPE ID (? (BLOCK (ALT EQUALS (SET STRING_VALUE ID))))))) (RULE intarrdeclaration (BLOCK (ALT INT_TYPE LEFT_BRACKET RIGHT_BRACKET ID (? (BLOCK (ALT EQUALS 'create' INT_TYPE LEFT_BRACKET INT_VALUE (* (BLOCK (ALT COMMA INT_VALUE))) RIGHT_BRACKET)))))) (RULE floatdeclaration (BLOCK (ALT FLOAT_TYPE ID (? (BLOCK (ALT EQUALS (BLOCK (ALT FLOAT_VALUE) (ALT opr)))))))) (RULE floatarrdeclaration (BLOCK (ALT FLOAT_TYPE LEFT_BRACKET RIGHT_BRACKET ID (? (BLOCK (ALT EQUALS 'create' FLOAT_TYPE LEFT_BRACKET FLOAT_VALUE (* (BLOCK (ALT COMMA FLOAT_VALUE))) RIGHT_BRACKET)))))) (RULE chardeclaration (BLOCK (ALT CHAR_TYPE ID (? (BLOCK (ALT EQUALS CHAR_VALUE)))))) (RULE chararrdeclaration (BLOCK (ALT STRING_TYPE ID (? (BLOCK (ALT EQUALS 'create' CHAR_TYPE STRING_VALUE)))))) (RULE assignment (BLOCK (ALT ID EQUALS (BLOCK (ALT opr) (ALT CHAR_VALUE) (ALT STRING_VALUE))))) (RULE condition (BLOCK (ALT IF LEFT_PAREN booleanexp (* (BLOCK (ALT logic booleanexp))) RIGHT_PAREN THEN LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE (* (BLOCK (ALT ELSEIF LEFT_PAREN booleanexp (* (BLOCK (ALT logic booleanexp))) RIGHT_PAREN THEN LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (? (BLOCK (ALT ELSE LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE)))))) (RULE loop (BLOCK (ALT loopfor) (ALT loopwhile))) (RULE loopfor (BLOCK (ALT FOR (BLOCK (ALT ID) (ALT intdeclaration) (ALT assignment)) (SET UP DOWN) TO (SET ID INT_VALUE) LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (RULE loopwhile (BLOCK (ALT WHILE (BLOCK (ALT ID) (ALT intdeclaration) (ALT assignment)) (SET UP DOWN) TO (SET ID INT_VALUE) LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE))) (RULE loopdowhile (BLOCK (ALT DO LEFT_BRACE (* (BLOCK (ALT block_content))) RIGHT_BRACE WHILE (BLOCK (ALT ID) (ALT intdeclaration) (ALT assignment)) (SET UP DOWN) TO (SET ID INT_VALUE)))) (RULE operation (BLOCK (ALT ID EQUALS opr) (ALT ID shortopr))) (RULE opr (BLOCK (ALT addopr))) (RULE addopr (BLOCK (ALT addopr PLUS multopr) (ALT addopr MINUS multopr) (ALT multopr))) (RULE multopr (BLOCK (ALT multopr MUL terminalopr) (ALT multopr DIV terminalopr) (ALT multopr MOD terminalopr) (ALT terminalopr))) (RULE terminalopr (BLOCK (ALT ID) (ALT INT_VALUE) (ALT FLOAT_VALUE) (ALT LEFT_PAREN opr RIGHT_PAREN))) (RULE shortopr (BLOCK (ALT PLUS_PLUS) (ALT MINUS_MINUS) (ALT (SET PLUS_EQUALS MIN_EQUALS MUL_EQUALS DIV_EQUALS) INT_VALUE))) (RULE print (BLOCK (ALT PRINT LEFT_PAREN (? (BLOCK (ALT (SET STRING_VALUE ID)))) (* (BLOCK (ALT PLUS (SET STRING_VALUE ID)))) RIGHT_PAREN))) (RULE scan (BLOCK (ALT SCAN LEFT_PAREN STRING_VALUE COMMA ID RIGHT_PAREN))) (RULE booleanexp (BLOCK (ALT (? (BLOCK (ALT NOT))) booleanvalue (? (BLOCK (ALT relation booleanvalue))) (* (BLOCK (ALT logic booleanexp)))))) (RULE booleanvalue (BLOCK (ALT INT_VALUE) (ALT ID) (ALT STRING_VALUE) (ALT CHAR_VALUE) (ALT TRUE) (ALT FALSE) (ALT LEFT_PAREN booleanexp RIGHT_PAREN))) (RULE relation (BLOCK (ALT (SET EQUALS_EQUALS NOT_EQUALS LESS_THAN_EQUALS LESS_THAN GREATER_THAN_EQUALS GREATER_THAN)))) (RULE logic (BLOCK (ALT (SET AND OR))))))
+2021-01-15 16:09:00:364 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR ExprLexer (RULES (RULE T__0 (BLOCK (ALT 'constant'))) (RULE T__1 (BLOCK (ALT 'create'))) (RULE CHAR_VALUE (BLOCK (ALT QUOTE_S . QUOTE_S))) (RULE STRING_VALUE (BLOCK (ALT QUOTE_D (* (BLOCK (ALT (~ (SET '"'))))) QUOTE_D))) (RULE INT_VALUE (BLOCK (ALT (? (BLOCK (ALT MINUS))) (+ (BLOCK (ALT DIGIT)))))) (RULE FLOAT_VALUE (BLOCK (ALT (? (BLOCK (ALT MINUS))) (+ (BLOCK (ALT DIGIT))) (? (BLOCK (ALT DOT (+ (BLOCK (ALT DIGIT)))))) 'f'))) (RULE IF (BLOCK (ALT 'if'))) (RULE ELSE (BLOCK (ALT 'else'))) (RULE ELSEIF (BLOCK (ALT 'else if'))) (RULE THEN (BLOCK (ALT 'then'))) (RULE FOR (BLOCK (ALT 'for'))) (RULE WHILE (BLOCK (ALT 'while'))) (RULE DO (BLOCK (ALT 'do'))) (RULE UP (BLOCK (ALT 'up'))) (RULE DOWN (BLOCK (ALT 'down'))) (RULE TO (BLOCK (ALT 'to'))) (RULE INT_TYPE (BLOCK (ALT 'int'))) (RULE FLOAT_TYPE (BLOCK (ALT 'float'))) (RULE CHAR_TYPE (BLOCK (ALT 'char'))) (RULE STRING_TYPE (BLOCK (ALT 'string'))) (RULE BOOLEAN_TYPE (BLOCK (ALT 'bool'))) (RULE VOID_TYPE (BLOCK (ALT 'void'))) (RULE FUNCTION (BLOCK (ALT 'func'))) (RULE PRINT (BLOCK (ALT 'print'))) (RULE SCAN (BLOCK (ALT 'scan'))) (RULE MAIN (BLOCK (ALT 'main'))) (RULE RETURN (BLOCK (ALT 'return'))) (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE ID (BLOCK (ALT LETTER (* (BLOCK (ALT LetterorDigit)))))) (RULE LEFT_BRACKET (BLOCK (ALT '['))) (RULE RIGHT_BRACKET (BLOCK (ALT ']'))) (RULE LEFT_PAREN (BLOCK (ALT '('))) (RULE RIGHT_PAREN (BLOCK (ALT ')'))) (RULE LEFT_BRACE (BLOCK (ALT '{'))) (RULE RIGHT_BRACE (BLOCK (ALT '}'))) (RULE COMMA (BLOCK (ALT ','))) (RULE SEMICOLON (BLOCK (ALT ';'))) (RULE DOT (BLOCK (ALT '.'))) (RULE QUOTE_S (BLOCK (ALT '\''))) (RULE QUOTE_D (BLOCK (ALT '"'))) (RULE PLUS_PLUS (BLOCK (ALT '++'))) (RULE MINUS_MINUS (BLOCK (ALT '--'))) (RULE PLUS (BLOCK (ALT '+'))) (RULE MINUS (BLOCK (ALT '-'))) (RULE MUL (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT '/'))) (RULE MOD (BLOCK (ALT '%'))) (RULE EQUALS (BLOCK (ALT '='))) (RULE PLUS_EQUALS (BLOCK (ALT '+='))) (RULE MIN_EQUALS (BLOCK (ALT '-='))) (RULE MUL_EQUALS (BLOCK (ALT '*='))) (RULE DIV_EQUALS (BLOCK (ALT '/='))) (RULE LESS_THAN (BLOCK (ALT '<'))) (RULE LESS_THAN_EQUALS (BLOCK (ALT '<='))) (RULE GREATER_THAN (BLOCK (ALT '>'))) (RULE GREATER_THAN_EQUALS (BLOCK (ALT '>='))) (RULE EQUALS_EQUALS (BLOCK (ALT '=='))) (RULE NOT_EQUALS (BLOCK (ALT '!='))) (RULE AND (BLOCK (ALT '&&'))) (RULE OR (BLOCK (ALT '||'))) (RULE NOT (BLOCK (ALT '!'))) (RULE DIGIT (BLOCK (ALT [0-9]))) (RULE LETTER (BLOCK (ALT [a-zA-Z$_]))) (RULE LetterorDigit (RULEMODIFIERS fragment) (BLOCK (ALT DIGIT) (ALT LETTER))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '//' (* (BLOCK (ALT (~ (SET [\r\n])))))) skip)))))
+2021-01-15 16:09:00:709 left-recursion LogManager.java:25 addopr
+    :   ( {} multopr<tokenIndex=880> 
+        )
+        (
+          {precpred(_ctx, 3)}?<p=3> PLUS<tokenIndex=866> multopr<tokenIndex=868>
+                  | {precpred(_ctx, 2)}?<p=2> MINUS<tokenIndex=874> multopr<tokenIndex=876>
+        )*
+    ;
+2021-01-15 16:09:00:713 grammar LogManager.java:25 added: (RULE addopr (BLOCK (ALT (BLOCK (ALT {} (multopr (ELEMENT_OPTIONS (= tokenIndex 880))))) (* (BLOCK (ALT ({precpred(_ctx, 3)}? (ELEMENT_OPTIONS (= p 3))) (PLUS (ELEMENT_OPTIONS (= tokenIndex 866))) (multopr (ELEMENT_OPTIONS (= tokenIndex 868)))) (ALT ({precpred(_ctx, 2)}? (ELEMENT_OPTIONS (= p 2))) (MINUS (ELEMENT_OPTIONS (= tokenIndex 874))) (multopr (ELEMENT_OPTIONS (= tokenIndex 876)))))))))
+2021-01-15 16:09:00:715 left-recursion LogManager.java:25 multopr
+    :   ( {} terminalopr<tokenIndex=910> 
+        )
+        (
+          {precpred(_ctx, 4)}?<p=4> MUL<tokenIndex=888> terminalopr<tokenIndex=890>
+                  | {precpred(_ctx, 3)}?<p=3> DIV<tokenIndex=896> terminalopr<tokenIndex=898>
+                  | {precpred(_ctx, 2)}?<p=2> MOD<tokenIndex=904> terminalopr<tokenIndex=906>
+        )*
+    ;
+2021-01-15 16:09:00:717 grammar LogManager.java:25 added: (RULE multopr (BLOCK (ALT (BLOCK (ALT {} (terminalopr (ELEMENT_OPTIONS (= tokenIndex 910))))) (* (BLOCK (ALT ({precpred(_ctx, 4)}? (ELEMENT_OPTIONS (= p 4))) (MUL (ELEMENT_OPTIONS (= tokenIndex 888))) (terminalopr (ELEMENT_OPTIONS (= tokenIndex 890)))) (ALT ({precpred(_ctx, 3)}? (ELEMENT_OPTIONS (= p 3))) (DIV (ELEMENT_OPTIONS (= tokenIndex 896))) (terminalopr (ELEMENT_OPTIONS (= tokenIndex 898)))) (ALT ({precpred(_ctx, 2)}? (ELEMENT_OPTIONS (= p 2))) (MOD (ELEMENT_OPTIONS (= tokenIndex 904))) (terminalopr (ELEMENT_OPTIONS (= tokenIndex 906)))))))))
+2021-01-15 16:09:00:719 semantics LogManager.java:25 tokens={EOF=-1, T__0=1, T__1=2, CHAR_VALUE=3, STRING_VALUE=4, INT_VALUE=5, FLOAT_VALUE=6, IF=7, ELSE=8, ELSEIF=9, THEN=10, FOR=11, WHILE=12, DO=13, UP=14, DOWN=15, TO=16, INT_TYPE=17, FLOAT_TYPE=18, CHAR_TYPE=19, STRING_TYPE=20, BOOLEAN_TYPE=21, VOID_TYPE=22, FUNCTION=23, PRINT=24, SCAN=25, MAIN=26, RETURN=27, TRUE=28, FALSE=29, ID=30, LEFT_BRACKET=31, RIGHT_BRACKET=32, LEFT_PAREN=33, RIGHT_PAREN=34, LEFT_BRACE=35, RIGHT_BRACE=36, COMMA=37, SEMICOLON=38, DOT=39, QUOTE_S=40, QUOTE_D=41, PLUS_PLUS=42, MINUS_MINUS=43, PLUS=44, MINUS=45, MUL=46, DIV=47, MOD=48, EQUALS=49, PLUS_EQUALS=50, MIN_EQUALS=51, MUL_EQUALS=52, DIV_EQUALS=53, LESS_THAN=54, LESS_THAN_EQUALS=55, GREATER_THAN=56, GREATER_THAN_EQUALS=57, EQUALS_EQUALS=58, NOT_EQUALS=59, AND=60, OR=61, NOT=62, DIGIT=63, LETTER=64, WS=65, COMMENT=66}
+2021-01-15 16:09:00:719 semantics LogManager.java:25 strings={'constant'=1, 'create'=2, 'if'=7, 'else'=8, 'else if'=9, 'then'=10, 'for'=11, 'while'=12, 'do'=13, 'up'=14, 'down'=15, 'to'=16, 'int'=17, 'float'=18, 'char'=19, 'string'=20, 'bool'=21, 'void'=22, 'func'=23, 'print'=24, 'scan'=25, 'main'=26, 'return'=27, 'true'=28, 'false'=29, '['=31, ']'=32, '('=33, ')'=34, '{'=35, '}'=36, ','=37, ';'=38, '.'=39, '\''=40, '"'=41, '++'=42, '--'=43, '+'=44, '-'=45, '*'=46, '/'=47, '%'=48, '='=49, '+='=50, '-='=51, '*='=52, '/='=53, '<'=54, '<='=55, '>'=56, '>='=57, '=='=58, '!='=59, '&&'=60, '||'=61, '!'=62}
+2021-01-15 16:09:00:736 LL1 LogManager.java:25 
+DECISION 0 in rule program
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 look=[23, 26]
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 
+DECISION 1 in rule block_content
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 look=[{17..21}, 1, 30, 13, 30, 24, 25, 30]
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 
+DECISION 2 in rule block_content
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 look=[{11..12}, 7]
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 
+DECISION 3 in rule block_content
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 look=[{1, 13, 17..21, 24..25, 30}, {7, 11..12}]
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 
+DECISION 4 in rule main
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 look=[{1, 7, 11..13, 17..21, 24..25, 30}, 36]
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 
+DECISION 5 in rule function
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 look=[31, 30]
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 
+DECISION 6 in rule function
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 look=[37, 34]
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 
+DECISION 7 in rule function
+2021-01-15 16:09:00:737 LL1 LogManager.java:25 look=[{17..21}, 34]
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 
+DECISION 8 in rule function
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 look=[{1, 7, 11..13, 17..21, 24..25, 30}, {27, 36}]
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 
+DECISION 9 in rule function
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 look=[27, 36]
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 
+DECISION 10 in rule call
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 look=[5, 6, 4, 3, {3..5, 28..30, 33, 62}, {5..6, 30, 33}, 30]
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 
+DECISION 11 in rule call
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 look=[5, 6, 4, 3, {3..5, 28..30, 33, 62}, {5..6, 30, 33}, 30]
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 
+DECISION 12 in rule call
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 look=[37, 34]
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 
+DECISION 13 in rule call
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 look=[{3..6, 28..30, 33, 62}, 34]
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 
+DECISION 14 in rule returnstatement
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 look=[{3..5, 28..30, 33, 62}, {5..6, 30, 33}, 30]
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 
+DECISION 15 in rule returnstatement
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 look=[{3..6, 28..30, 33, 62}, 36]
+2021-01-15 16:09:00:738 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 
+DECISION 16 in rule parameter
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 look=[17, 21, 20, 19, {17..19, 21}, 18]
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 
+DECISION 17 in rule declaration
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 look=[{17..21}, {17..18, 20..21}]
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 
+DECISION 18 in rule singledeclaration
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 look=[17, 18, 19, 21, 20]
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 
+DECISION 19 in rule arraydeclaration
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 look=[17, 18, 20, 21]
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:739 LL1 LogManager.java:25 
+DECISION 20 in rule booleandeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[{60..61}, 38]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 21 in rule booleanarrdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[{60..61}, 38]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 22 in rule booleanarrdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[49, 38]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 23 in rule intdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[5, {5..6, 30, 33}]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 24 in rule intdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[49, {14..15, 38}]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 25 in rule stringdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[49, 38]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 26 in rule intarrdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[37, 32]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 27 in rule intarrdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[49, 38]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 28 in rule floatdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[6, {5..6, 30, 33}]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 29 in rule floatdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[49, 38]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 30 in rule floatarrdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[37, 32]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 31 in rule floatarrdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[49, 38]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 32 in rule chardeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[49, 38]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 33 in rule chararrdeclaration
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 look=[49, 38]
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:740 LL1 LogManager.java:25 
+DECISION 34 in rule assignment
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 look=[{5..6, 30, 33}, 3, 4]
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 
+DECISION 35 in rule condition
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 look=[{60..61}, 34]
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 
+DECISION 36 in rule condition
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 look=[{1, 7, 11..13, 17..21, 24..25, 30}, 36]
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 
+DECISION 37 in rule condition
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 look=[{60..61}, 34]
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 
+DECISION 38 in rule condition
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 look=[{1, 7, 11..13, 17..21, 24..25, 30}, 36]
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 
+DECISION 39 in rule condition
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 look=[9, {1, 7..8, 11..13, 17..21, 24..25, 27, 30, 36}]
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 
+DECISION 40 in rule condition
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 look=[{1, 7, 11..13, 17..21, 24..25, 30}, 36]
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 
+DECISION 41 in rule condition
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 look=[8, {1, 7, 11..13, 17..21, 24..25, 27, 30, 36}]
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:741 LL1 LogManager.java:25 
+DECISION 42 in rule loop
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[11, 12]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 43 in rule loopfor
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[30, 17, 30]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 44 in rule loopfor
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[{1, 7, 11..13, 17..21, 24..25, 30}, 36]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 45 in rule loopwhile
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[30, 17, 30]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 46 in rule loopwhile
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[{1, 7, 11..13, 17..21, 24..25, 30}, 36]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 47 in rule loopdowhile
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[{1, 7, 11..13, 17..21, 24..25, 30}, 36]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 48 in rule loopdowhile
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[30, 17, 30]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 49 in rule operation
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[30, 30]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 50 in rule addopr
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[null, null]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 51 in rule addopr
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[null, {3..6, 14..15, 28..30, 33..34, 36..38, 62}]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 52 in rule multopr
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[null, null, null]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 53 in rule multopr
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[null, null]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 54 in rule terminalopr
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[30, 5, 6, 33]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 55 in rule shortopr
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[42, 43, {50..53}]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 56 in rule print
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[{4, 30}, {34, 44}]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 57 in rule print
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[44, 34]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 58 in rule booleanexp
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[62, {3..5, 28..30, 33}]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 59 in rule booleanexp
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[{54..59}, {3..6, 28..30, 33..34, 36..38, 60..62}]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 60 in rule booleanexp
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 look=[{60..61}, {3..6, 28..30, 33..34, 36..38, 60..62}]
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 LL(1)? false
+2021-01-15 16:09:00:742 LL1 LogManager.java:25 
+DECISION 61 in rule booleanvalue
+2021-01-15 16:09:00:763 LL1 LogManager.java:25 look=[5, 30, 4, 3, 28, 29, 33]
+2021-01-15 16:09:00:763 LL1 LogManager.java:25 LL(1)? true
+2021-01-15 16:09:00:811 action-translator LogManager.java:25 translate 
+2021-01-15 16:09:00:812 action-translator LogManager.java:25 translate precpred(_ctx, 3)
+2021-01-15 16:09:00:812 action-translator LogManager.java:25 translate precpred(_ctx, 2)
+2021-01-15 16:09:00:817 action-translator LogManager.java:25 translate precpred(_ctx, 3)
+2021-01-15 16:09:00:817 action-translator LogManager.java:25 translate precpred(_ctx, 2)
+2021-01-15 16:09:00:818 action-translator LogManager.java:25 translate 
+2021-01-15 16:09:00:818 action-translator LogManager.java:25 translate precpred(_ctx, 4)
+2021-01-15 16:09:00:820 action-translator LogManager.java:25 translate precpred(_ctx, 3)
+2021-01-15 16:09:00:821 action-translator LogManager.java:25 translate precpred(_ctx, 2)
+2021-01-15 16:09:00:827 action-translator LogManager.java:25 translate precpred(_ctx, 4)
+2021-01-15 16:09:00:827 action-translator LogManager.java:25 translate precpred(_ctx, 3)
+2021-01-15 16:09:00:827 action-translator LogManager.java:25 translate precpred(_ctx, 2)
