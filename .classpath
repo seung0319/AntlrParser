@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="D:/Hwan/eclipse-workspace/AntlrParser/lib"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Dustin Ampong/Documents/GitHub/AntlrParser/lib"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-14">
@@ -10,6 +10,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Hwan/eclipse-workspace/AntlrParser/lib/antlr-4.7.2-complete.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Dustin Ampong/Documents/GitHub/AntlrParser/lib/antlr-4.7.2-complete.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

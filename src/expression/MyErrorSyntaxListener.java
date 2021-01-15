@@ -54,7 +54,7 @@ public class MyErrorSyntaxListener extends BaseErrorListener {
 		String ErrorPrevious= ((Parser)recognizer).getTokenStream().get(previoustoken).getText();
 		int ErrorPtoken= ((Parser)recognizer).getTokenStream().get(previoustoken).getType();
 		int ErrorCtoken= ((Parser)recognizer).getTokenStream().get(currenttoken).getType();
-		
+		System.out.println(ErrorPtoken + " "+ErrorCtoken);
 		
 		//System.out.println(((Parser)recognizer).getTokenStream().getText((Token) ((Parser)recognizer).getRuleContext().getParent().getStart(),((Token) offendingSymbol)));
 		//stream= ((Parser)recognizer).getTokenStream().getText((Token) ((Parser)recognizer).getRuleContext().getParent().getStart(),((Token) offendingSymbol));
@@ -64,6 +64,7 @@ public class MyErrorSyntaxListener extends BaseErrorListener {
 			
 			//System.out.println(((Parser)recognizer).get);
 			
+			System.out.println(((Parser)recognizer).getTokenStream().getText((Token) ((Parser)recognizer).getRuleContext().getParent().getStart(),((Token) offendingSymbol)));
 			
 			//System.out.println(((Parser)recognizer).getTokenStream().get(tokenindex).getText());
 		}
@@ -84,21 +85,22 @@ public class MyErrorSyntaxListener extends BaseErrorListener {
 			
 			 System.err.println("SYNTAX ERROR."  + " " + "Missing " + "[" +listoferrors +"]" + "between \""+ErrorPrevious +"\"" +" and \"" + ErrorCurrent +"\" " +"at line " +line );
          } else if (msg.contains("extraneous input")){
-        	 System.err.println("SYNTAX ERROR."  + " " + "Extra Unidentified Character/s " + ErrorCurrent   +" at line " +line + " Did you mean? : " + "[" +listoferrors +"]" );
+        	 System.err.println("SYNTAX ERROR."  + " " + "Extra Unidentified Character " + "\"" + ErrorCurrent +"\""  +" at line " +line + " Did you mean? : " + "[" +listoferrors +"]" );
          }
          else if(msg.contains("mismatched input")){
-        	 System.err.println("SYNTAX ERROR."  + " " + "Unexpected Character/s " + ErrorCurrent   +" at line " +line + " Did you mean? : " + "[" +listoferrors +"]" );
+        	 System.err.println("SYNTAX ERROR."  + " " + "Unexpected Character " + "\"" + ErrorCurrent +"\""   +" at line " +line + " Did you mean? : " + "[" +listoferrors +"]" );
         	 
          }
          else if(msg.contains("no viable alternative at input")){
              //String test = listener.getSyntaxErrors().get(i).getOffendingSymbol().toString();
              //test = test.split("'")[1];
              //System.err.println("(Syntax error at line:" + line + ") " + "consider changing symbol in expression -> " + ((Token) offendingSymbol).getText() + msg);
-        	 if(ErrorCtoken == 38 ) {
+        	/* if(ErrorCtoken == 38 ) {
         		 System.err.println("SYNTAX ERROR."  + " " + "Missing " + "[" +listoferrors +"]" + "between \""+ErrorPrevious +"\"" +" and \"" + ErrorCurrent +"\" " +"at line " +line );
         	 }
         	 
         	 else
+        	 */
         	 System.err.println("SYNTAX ERROR."  + " " + "Does not recognize " + ((Token) offendingSymbol).getText() +" at line " +line);
          }
          else if(msg.contains("cannot find symbol")){

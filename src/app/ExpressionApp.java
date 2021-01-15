@@ -42,7 +42,7 @@ public class ExpressionApp {
 			
 			//syntax error handling
 			parser.removeErrorListeners();
-			parser.setErrorHandler(new DefaultErrorStrategy());
+			//parser.setErrorHandler(new DefaultErrorStrategy());
 			//parser.addErrorListener(new SyntaxErrorListener());
 			parser.addErrorListener(new MyErrorSyntaxListener());
 		}catch(IOException e) {
