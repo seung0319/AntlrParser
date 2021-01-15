@@ -20,13 +20,33 @@ public class MyErrorSyntaxListener extends BaseErrorListener {
 			String msg, RecognitionException e) {
 		hasError = true;
 		
-		List<String> stack = ((Parser) recognizer).getRuleInvocationStack();	
+		/*List<String> stack = ((Parser) recognizer).getRuleInvocationStack();	
 		Collections.reverse(stack);
 		System.err.println("Syntax Error!");
 		System.err.println("Token" + "\"" + ((Token) offendingSymbol).getText() + "\""
 				+ "(line " + line + ", column " + (charPositionInLine + 1) + ")"
 				+ ": " + msg);
 		System.err.println("Rule Stack: " + stack);
+		*/
+		 if (msg.contains("missing")) {
+			 System.err.println("(Syntax error at line:" + line + ") " + "missing -> " + ((Token) offendingSymbol).getText());
+         } else if (msg.contains("extraneous input")){
+        	 System.err.println("(Syntax error at line:" + line+ ") " + "extra character/s -> " + ((Token) offendingSymbol).getText());
+         }
+         else if(msg.contains("mismatched input")){
+        	 System.err.println("(Syntax error at line:" + line + ") " + "unexpected -> " + ((Token) offendingSymbol).getText());
+         }
+         else if(msg.contains("no viable alternative at input")){
+             //String test = listener.getSyntaxErrors().get(i).getOffendingSymbol().toString();
+             //test = test.split("'")[1];
+             System.err.println("(Syntax error at line:" + line + ") " + "consider changing symbol in expression -> " + ((Token) offendingSymbol).getText());
+         }
+         else if(msg.contains("cannot find symbol")){
+        	 System.err.println("(Syntax error at line:" + line + ") " + "missing symbol -> " + ((Token) offendingSymbol).getText());
+         }
+         else {
+        	 System.err.println("(Syntax error at line:" + line + ") " + ((Token) offendingSymbol).getText());
+         }
 	}
 	
 }
