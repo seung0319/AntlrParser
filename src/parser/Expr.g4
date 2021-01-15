@@ -75,6 +75,7 @@ shortopr: PLUS_PLUS | MINUS_MINUS | (PLUS_EQUALS | MIN_EQUALS | MUL_EQUALS | DIV
 print: PRINT LEFT_PAREN(STRING_VALUE | ID)? (PLUS (STRING_VALUE | ID))* RIGHT_PAREN;
 scan: SCAN LEFT_PAREN STRING_VALUE COMMA ID RIGHT_PAREN;
 
+
 //boolean parsing
 booleanexp: (NOT)?booleanvalue(relation booleanvalue)? (logic booleanexp)*;
 booleanvalue: INT_VALUE | ID | STRING_VALUE | CHAR_VALUE | TRUE | FALSE | LEFT_PAREN booleanexp RIGHT_PAREN;
@@ -82,7 +83,7 @@ booleanvalue: INT_VALUE | ID | STRING_VALUE | CHAR_VALUE | TRUE | FALSE | LEFT_P
 relation: (EQUALS_EQUALS | NOT_EQUALS | LESS_THAN_EQUALS | LESS_THAN | GREATER_THAN_EQUALS | GREATER_THAN);
 logic: (AND | OR);
 
-
+// lexer
 //literals
 //CONSTANT: 'constant';
 CHAR_VALUE: QUOTE_S . QUOTE_S;

@@ -6,9 +6,13 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.DefaultErrorStrategy;
+import org.antlr.v4.runtime.InputMismatchException;
 import org.antlr.v4.runtime.Parser;
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.RecognitionException;
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.misc.IntervalSet;
+import org.antlr.v4.runtime.misc.ParseCancellationException;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import expression.MyErrorSyntaxListener;
@@ -38,7 +42,7 @@ public class ExpressionApp {
 			
 			//syntax error handling
 			parser.removeErrorListeners();
-			
+			parser.setErrorHandler(new DefaultErrorStrategy());
 			//parser.addErrorListener(new SyntaxErrorListener());
 			parser.addErrorListener(new MyErrorSyntaxListener());
 		}catch(IOException e) {
