@@ -43,6 +43,32 @@ public class ExpressionApp {
 			//syntax error handling
 			parser.removeErrorListeners();
 			//parser.setErrorHandler(new DefaultErrorStrategy());
+			parser.setErrorHandler(new DefaultErrorStrategy() {
+				 @Override
+			        public void recover(Parser recognizer, RecognitionException e) {
+			            if (lastErrorIndex==recognizer.getInputStream().index() && lastErrorStates != null && lastErrorStates.contains(recognizer.getState())) {
+			            	recognizer.consume();
+			            }
+			            if(lastErrorStates ==null)
+			            	lastErrorStates = new IntervalSet();
+			            lastErrorStates.add(recognizer.getState());
+			            IntervalSet followSet = getErrorRecoverySet(recognizer);
+			            consumeUntil(recognizer, followSet);
+			        }
+				/*
+				 public Token recoverInline(Parser recognizer)
+				            throws RecognitionException
+				        {
+				            InputMismatchException e = new InputMismatchException(recognizer);
+				            for (ParserRuleContext context = recognizer.getContext(); context != null; context = context.getParent()) {
+				                context.exception = e;
+				            }
+				            
+
+				            throw new ParseCancellationException(e);
+				        }*/
+				
+			});
 			//parser.addErrorListener(new SyntaxErrorListener());
 			parser.addErrorListener(new MyErrorSyntaxListener());
 		}catch(IOException e) {

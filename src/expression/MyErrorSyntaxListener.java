@@ -54,7 +54,7 @@ public class MyErrorSyntaxListener extends BaseErrorListener {
 		String ErrorPrevious= ((Parser)recognizer).getTokenStream().get(previoustoken).getText();
 		int ErrorPtoken= ((Parser)recognizer).getTokenStream().get(previoustoken).getType();
 		int ErrorCtoken= ((Parser)recognizer).getTokenStream().get(currenttoken).getType();
-		System.out.println(ErrorPtoken + " "+ErrorCtoken);
+		//System.out.println(ErrorPtoken + " "+ErrorCtoken);
 		
 		//System.out.println(((Parser)recognizer).getTokenStream().getText((Token) ((Parser)recognizer).getRuleContext().getParent().getStart(),((Token) offendingSymbol)));
 		//stream= ((Parser)recognizer).getTokenStream().getText((Token) ((Parser)recognizer).getRuleContext().getParent().getStart(),((Token) offendingSymbol));
@@ -64,7 +64,7 @@ public class MyErrorSyntaxListener extends BaseErrorListener {
 			
 			//System.out.println(((Parser)recognizer).get);
 			
-			System.out.println(((Parser)recognizer).getTokenStream().getText((Token) ((Parser)recognizer).getRuleContext().getParent().getStart(),((Token) offendingSymbol)));
+			//System.out.println(((Parser)recognizer).getTokenStream().getText((Token) ((Parser)recognizer).getRuleContext().getParent().getStart(),((Token) offendingSymbol)));
 			
 			//System.out.println(((Parser)recognizer).getTokenStream().get(tokenindex).getText());
 		}
@@ -78,7 +78,7 @@ public class MyErrorSyntaxListener extends BaseErrorListener {
 		 if (msg.contains("missing")) {
 			// tokentypeList;
 			if(ErrorParentToken == "for") {
-				if(ErrorPtoken == 30  ) {
+				if(ErrorPtoken == 30 ) {
 					System.err.println("(Syntax error at line:" + line + ") " + "missing  at -> " +ErrorPrevious + listoferrors );
 				}
 			}
