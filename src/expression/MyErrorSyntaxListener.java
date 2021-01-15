@@ -73,9 +73,9 @@ public class MyErrorSyntaxListener extends BaseErrorListener {
 			 stream= "EOF";
 		}
 		//System.out.println(((Parser)recognizer).getTokenStream().getText(((RuleContext) ((Parser) recognizer).getContext())));
-		
+		//System.out.println(line +" "+ msg);
 		//System.out.println(ErrorParentToken);
-		 if (msg.contains("missing")) {
+		if (msg.contains("missing")) {
 			// tokentypeList;
 			if(ErrorParentToken == "for") {
 				if(ErrorPtoken == 30 ) {
@@ -103,12 +103,10 @@ public class MyErrorSyntaxListener extends BaseErrorListener {
         	 */
         	 System.err.println("SYNTAX ERROR."  + " " + "Does not recognize " + ((Token) offendingSymbol).getText() +" at line " +line);
          }
-         else if(msg.contains("cannot find symbol")){
-        	 System.err.println("(Syntax error at line:" + line + ") " + "missing symbol -> " + ((Token) offendingSymbol).getText());
-         }
          else {
-        	 System.err.println("(Syntax error at line:" + line + ") " + ((Token) offendingSymbol).getText());
+        	 System.err.println("SYNTAX ERROR. " + ((Token) offendingSymbol).getText() +" " + msg);
          }
+         
 	}
 	
 }

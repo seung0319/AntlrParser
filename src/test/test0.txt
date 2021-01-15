@@ -1,25 +1,18 @@
 //correct any minor syntax inconsistencies when necessary (refer to pseudocode's language design)
 
-func void testOne() {
-	int x = 0;
-	scan("Hello. I need your number: " ,x);
+func int myFunction(int x) {
+	int add = x + 50 ++ 1; //syntax error #1
 	
-	for int i to 10 { //syntax error #1
-		print("Petmalu " +x+); //syntax error #2
-
-	//syntax error #3 (missing curly brace)
+	return int; //syntax error #2
 }
 
-func void testTwo(float x) {
-	if(x = 4) then //syntax error #4 
-	{
-		print(x is a very huge number); //syntax error #5
-	} 
+func float myFunctionFloat(float x) {
+	float fTest = (x * 50) + (x * 15)); //syntax error #3
+	
+	return fTest * 50 (); //syntax error #4
 }
 
 main() {
-	float value = (5 * 1) + (5 * 5 / 1 + 3 + (4 + (5 * 3)))/2.0f * 8.0f;
-	
-	testOne()(x); //syntax error #6
-	testTwo(123 ++value); //syntax error #7
+	myFunction(50);
+	myFunctionFloat(50.0f);
 }

@@ -3,15 +3,12 @@ grammar Expr;
 
 program: function* main EOF;
 
-block_content: (( declaration | constantdeclaration | assignment | loopdowhile | operation | print | scan | call) SEMICOLON) | (loop | condition);
-//block_content2: ( declaration | constantdeclaration | assignment | condition | operation | function | print | scan) SEMICOLON;
-
+block_content: (( declaration| constantdeclaration | assignment | loopdowhile | operation | print | scan | call) SEMICOLON) | (loop | condition);
 
 //function declaration
 main: MAIN LEFT_PAREN RIGHT_PAREN LEFT_BRACE block_content* RIGHT_BRACE;
 function: FUNCTION (INT_TYPE | FLOAT_TYPE | CHAR_TYPE | STRING_TYPE | VOID_TYPE) (LEFT_BRACKET RIGHT_BRACKET)? ID LEFT_PAREN (parameter (COMMA parameter)*)? RIGHT_PAREN LEFT_BRACE block_content* (returnstatement)? RIGHT_BRACE;
 //function: FUNCTION (INT_TYPE | FLOAT_TYPE | CHAR_TYPE | STRING_TYPE | VOID_TYPE) (LEFT_BRACKET RIGHT_BRACKET)? ID LEFT_PAREN (parameter (COMMA parameter)*)? RIGHT_PAREN LEFT_BRACE block_content* (returnstatement)? RIGHT_BRACE;
-//call: ID LEFT_PAREN (INT_VALUE| FLOAT_VALUE | STRING_VALUE | CHAR_VALUE | booleanexp | opr | ID)* RIGHT_PAREN;
 call: ID LEFT_PAREN ((INT_VALUE| FLOAT_VALUE | STRING_VALUE | CHAR_VALUE | booleanexp | opr | ID) (COMMA (INT_VALUE| FLOAT_VALUE | STRING_VALUE | CHAR_VALUE | booleanexp | opr | ID))* )? RIGHT_PAREN;
 
 
@@ -57,14 +54,6 @@ loopdowhile: DO LEFT_BRACE block_content* RIGHT_BRACE WHILE (ID | intdeclaration
 
 //operations
 operation: ID EQUALS opr | ID shortopr;
-
-/*opr: addopr;
-addopr: addopr plus_minus | multopr;
-plus_minus: PLUS multopr | MINUS multopr | multopr;
-multopr: multopr mult_div_mod | terminalopr;
-mult_div_mod:  MUL terminalopr | DIV terminalopr | MOD terminalopr;
-terminalopr: ID | INT_VALUE | FLOAT_VALUE | LEFT_PAREN opr RIGHT_PAREN;
-*/
 opr: addopr;
 addopr: addopr PLUS multopr | addopr MINUS multopr | multopr;
 multopr: multopr MUL terminalopr | multopr DIV terminalopr | multopr MOD terminalopr | terminalopr;
@@ -73,9 +62,9 @@ terminalopr: ID | INT_VALUE | FLOAT_VALUE | LEFT_PAREN opr RIGHT_PAREN;
 shortopr: PLUS_PLUS | MINUS_MINUS | (PLUS_EQUALS | MIN_EQUALS | MUL_EQUALS | DIV_EQUALS) INT_VALUE;
 
 //printing and scanning
-//print: PRINT LEFT_PAREN(STRING_VALUE)? (PLUS (STRING_VALUE))* RIGHT_PAREN;
 print: PRINT LEFT_PAREN(STRING_VALUE | ID)? (PLUS (STRING_VALUE | ID))* RIGHT_PAREN;
 scan: SCAN LEFT_PAREN STRING_VALUE COMMA ID RIGHT_PAREN;
+
 //boolean parsing
 booleanexp: (NOT)?booleanvalue(relation booleanvalue)? (logic booleanexp)*;
 booleanvalue: INT_VALUE | ID | STRING_VALUE | CHAR_VALUE | TRUE | FALSE | LEFT_PAREN booleanexp RIGHT_PAREN;
@@ -176,7 +165,7 @@ NOT: '!';
 
 //digits and letters
 DIGIT: [0-9];
-LETTER:[a-zA-Z$_];
+LETTER:[a-zA-Z$_:?#@^];
 
 fragment LetterorDigit: DIGIT | LETTER;
 
